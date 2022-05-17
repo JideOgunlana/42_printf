@@ -6,11 +6,12 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 19:30:34 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/12 21:23:36 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:21:25 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 t_printf	*ft_intialize(t_printf *val)
 {
@@ -27,10 +28,12 @@ t_printf	*ft_intialize(t_printf *val)
 	return (val);
 }
 
+
+
 int	ft_printf(const char *format, ...)
 {
-	t_printf	*val;
-	int			ret;
+	t_printf				*val;
+	int						ret;
 	int			i;
 
 	val = (t_printf *) malloc(sizeof(t_printf));
@@ -40,7 +43,7 @@ int	ft_printf(const char *format, ...)
 	i = 0;
 	ret = 0;
 	va_start(val->args, format);
-	while (i < strlen(format))
+	while (i < ft_strlen(format))
 	{
 		if (format[i] == '%')
 			i = ft_eval(val, format, i + 1);
@@ -52,4 +55,10 @@ int	ft_printf(const char *format, ...)
 	ret += val->tl;
 	free(val);
 	return (ret);
+}
+
+int	main()
+{
+	printf("\n%10d",ft_printf("hasdfasfsdfasfsfsad %-0ck %%j %ch", 10, 10));
+	return (0);
 }
