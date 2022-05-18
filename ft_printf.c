@@ -59,6 +59,6 @@ int	ft_printf(const char *format, ...)
 
 int	main()
 {
-	printf("\n%10d",ft_printf("hasdfasfsdfasfsfsad %-0ck %%j %ch", 10, 10));
+	printf("\n%d",ft_printf("a %u",429496729));
 	return (0);
 }
