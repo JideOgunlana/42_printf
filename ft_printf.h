@@ -6,7 +6,7 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:17:59 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/17 15:56:53 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/18 18:13:16 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ typedef struct	s_printf
 int			ft_eval(t_printf *val, const char *format, int i);
 t_printf	*ft_intialize(t_printf *val);
 int			ft_printf(const char *format, ...);
+void		ft_print_char(t_printf *val);
+
 
 #endif

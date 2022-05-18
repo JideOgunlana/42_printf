@@ -6,7 +6,7 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 19:30:34 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/17 17:21:25 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/18 18:25:21 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ int	ft_printf(const char *format, ...)
 
 int	main()
 {
-	printf("\n%d",ft_printf("a %u",429496729));
+	char *p;
+
+	p = "h";
+	printf("\n%d",ft_printf("a %p", p));
 	return (0);
 }
