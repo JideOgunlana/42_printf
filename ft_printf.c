@@ -6,7 +6,7 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 19:30:34 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/18 18:25:21 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/19 18:51:21 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,15 @@ t_printf	*ft_intialize(t_printf *val)
 	return (val);
 }
 
-
-
 int	ft_printf(const char *format, ...)
 {
-	t_printf				*val;
-	int						ret;
-	int			i;
+	t_printf		*val;
+	int				ret;
+	unsigned int	i;
 
 	val = (t_printf *) malloc(sizeof(t_printf));
 	if (!val)
-		return(-1);
+		return(0);
 	ft_intialize(val);
 	i = 0;
 	ret = 0;
@@ -57,11 +55,3 @@ int	ft_printf(const char *format, ...)
 	return (ret);
 }
 
-int	main()
-{
-	char *p;
-
-	p = "h";
-	printf("\n%d",ft_printf("a %p", p));
-	return (0);
-}

@@ -6,7 +6,7 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:17:59 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/18 18:13:16 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:38:45 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,14 @@ typedef struct	s_printf
 	int		pound;
 }				t_printf;
 
+int			ft_printf(const char *format, ...);
 int			ft_eval(t_printf *val, const char *format, int i);
 t_printf	*ft_intialize(t_printf *val);
-int			ft_printf(const char *format, ...);
 void		ft_print_char(t_printf *val);
-
+void		ft_print_num(t_printf *val);
+void		ft_print_string(t_printf *val);
+void		ft_print_pointer(t_printf *val);
+void		ft_print_unsigned_int(t_printf *val);
+void		ft_print_hex(t_printf *val, char c);
 
 #endif
