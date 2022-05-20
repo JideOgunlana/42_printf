@@ -6,12 +6,11 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 19:30:34 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/20 13:35:35 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/20 20:49:07 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 t_printf	*ft_intialize(t_printf *val)
 {
@@ -35,7 +34,7 @@ int	ft_printf(const char *format, ...)
 
 	val = (t_printf *) malloc(sizeof(t_printf));
 	if (!val)
-		return(0);
+		return (0);
 	ft_intialize(val);
 	i = 0;
 	ret = 0;
@@ -53,4 +52,3 @@ int	ft_printf(const char *format, ...)
 	free(val);
 	return (ret);
 }
-

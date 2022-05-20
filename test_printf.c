@@ -7,19 +7,21 @@
 int main()
 {
     // printf("%d",ft_printf(" % d ", -1));
-	printf("%d",ft_printf(" %+d ", 1));
+	// printf("%d",ft_printf(" % +d ", -1));
 	// printf("%d",ft_printf(" % d ", -1));
 	// ft_printf(" % d ", 1);
 	// ft_printf(" % d ", 9);
 	// ft_printf(" % d ", 10);
+	printf(":%d:",ft_printf("% 10d", 1234));
 
 printf("\n ---------------------------------\n");
 	// printf("%d",printf(" % d ", -1));
-	printf("%d",printf(" %+d ", 1));
+	// printf("%d",printf(" %  +d ", -1));
 	// printf("%d",printf(" % d ", -1));
 	// printf(" % d ", 1);
 	// printf(" % d ", 9);
 	// printf(" % d ", 10);
+	printf(":%d:",printf("% 10d", 1234));
+
 	return (0);
 }
- 

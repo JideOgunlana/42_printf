@@ -6,13 +6,13 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:35:01 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/19 14:35:28 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/20 17:51:01 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_unsinged_nbr_l(unsigned int n)
+int	ft_unsinged_nbr_l(unsigned int n)
 {
 	if (n < 0)
 		n += 4294967295;
@@ -28,13 +28,13 @@ void	ft_put_unsigned_nbr_fd(unsigned int n, int fd)
 	else if (n < 10)
 	{
 		n = n + '0';
-		write(fd, &n, 1);
+		ft_putchar_fd(n, fd);
 	}
 	else
 	{
 		ft_put_unsigned_nbr_fd(n / 10, fd);
 		n = (n % 10) + '0';
-		write(fd, &n, 1);
+		ft_putchar_fd(n, fd);
 	}
 }
 

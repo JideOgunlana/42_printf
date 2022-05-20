@@ -6,19 +6,19 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 18:17:59 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/20 13:35:26 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/20 17:54:57 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
-#define TRUE 1
-#define FALSE 0
+# define FT_PRINTF_H
+# define TRUE 1
+# define FALSE 0
 
-#include "./libft/libft.h"
-#include <stdarg.h>
+# include "./libft/libft.h"
+# include <stdarg.h>
 
-typedef struct	s_printf
+typedef struct s_printf
 {
 	//	variables used in the struct identify the flags passed in the printf function
 	va_list	args;

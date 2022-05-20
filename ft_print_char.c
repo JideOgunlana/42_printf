@@ -6,7 +6,7 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:11:41 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/18 18:14:04 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/20 17:47:06 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_print_char(t_printf *val)
 {
-	char c;
+	char	c;
 
 	c = va_arg(val->args, int);
 	val->tl += write(1, &c, 1);

@@ -6,7 +6,7 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:36:27 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/19 18:17:16 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/20 17:45:58 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_put_ptr(unsigned long p, int fd)
 	if (p < 10)
 	{
 		p = p + '0';
-		write(fd, &p, 1);
+		ft_putchar_fd(p, fd);
 	}
 	else
 	{
@@ -34,7 +34,7 @@ void	ft_put_ptr(unsigned long p, int fd)
 			p = (p % 16) + '0';
 		else
 			p = ((p % 16) - 10) + 'a';
-		write(fd, &p, 1);
+		ft_putchar_fd(p, fd);
 	}
 }
 
@@ -47,4 +47,3 @@ void	ft_print_pointer(t_printf *val)
 	write(1, "0x", 2);
 	ft_put_ptr(p, 1);
 }
-
