@@ -6,7 +6,7 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 19:03:41 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/19 19:09:43 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/20 16:58:44 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,23 @@ void	ft_print_num(t_printf *val)
 	str = ft_itoa(num);
 	val->tl += ft_strlen(str);
 	free(str);
+	if((val->spc && val->sign) || val->sign)
+	{
+		// if (num < 0)
+		// {
+			// write(1, "-", 1);
+			// val->tl += 1;
+		// }
+		if (num >= 0)
+		{
+			write(1, "+", 1);
+			val->tl += 1;
+		}
+	}
+	else if (val->spc && num >= 0)
+	{
+		write(1, " ", 1);
+		val->tl += 1;
+	}
 	ft_putnbr_fd(num, 1);
 }

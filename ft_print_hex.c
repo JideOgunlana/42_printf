@@ -6,7 +6,7 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:38:06 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/19 20:22:19 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/20 16:45:18 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,33 @@ void	ft_print_hex(t_printf *val, char c)
 
 	num = va_arg(val->args, unsigned int);
 	val->tl += ft_hex_l(num);
+	if(val->pound && c == 'x' && num != 0)
+	{
+		write(1, "0x", 2);
+		val->tl += 2;	
+	}
+	if(val->pound && c == 'X' && num != 0)
+	{
+		write(1, "0X", 2);
+		val->tl += 2;
+	}
+	// if((val->spc && val->sign) || val->sign)
+	// {
+	// 	if (num < 0)
+	// 	{
+	// 		write(1, "-", 1);
+	// 		val->tl += 1;
+	// 	}
+	// 	else
+	// 	{
+	// 		write(1, "+", 1);
+	// 		val->tl += 1;
+	// 	}
+	// }
+	// else if (val->spc)
+	// {
+	// 	write(1, " ", 1);
+	// 	val->tl += 1;
+	// }
 	ft_put_hex(num, c, 1);
 }

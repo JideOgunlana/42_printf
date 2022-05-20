@@ -6,7 +6,7 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 19:30:34 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/19 18:51:21 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/20 13:35:35 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 t_printf	*ft_intialize(t_printf *val)
 {
 	val->width = 0;
-	val->prc = 0;
 	val->zero = 0;
 	val->point = 0;
 	val->dash = 0;

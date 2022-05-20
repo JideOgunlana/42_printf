@@ -61,6 +61,8 @@ c.o: $(SRCS) $(LIBFT)
 $(NAME): $(OBJS)
 	$(AR) $@ $^
 
+bonus: re
+
 clean:
 	$(RM) $(OBJS) $(LIBFT_OBJS)
 
@@ -69,4 +71,4 @@ fclean: clean
 
 re: clean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
