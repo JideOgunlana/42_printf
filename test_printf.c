@@ -12,7 +12,7 @@ int main()
 	// ft_printf(" % d ", 1);
 	// ft_printf(" % d ", 9);
 	// ft_printf(" % d ", 10);
-	printf(":%d:",ft_printf("% 10d", 1234));
+	printf(":%d:",ft_printf("%6s % 2s % 5s", "a", "a", "abc"));
 
 printf("\n ---------------------------------\n");
 	// printf("%d",printf(" % d ", -1));
@@ -21,7 +21,8 @@ printf("\n ---------------------------------\n");
 	// printf(" % d ", 1);
 	// printf(" % d ", 9);
 	// printf(" % d ", 10);
-	printf(":%d:",printf("% 10d", 1234));
+	printf(":%d:",printf("%6s % 2s % 5s", "a", "b", "abc"));
+	printf("\n");
 
 	return (0);
 }

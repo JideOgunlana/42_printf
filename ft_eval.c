@@ -6,7 +6,7 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:33:49 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/21 01:15:41 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/21 17:43:04 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ int	check_flags(t_printf *val, const char *format, int i)
 			val->sign = TRUE;
 			i++;
 		}
-		// if (format[i] == '-')
-		// {
-		// 	val->dash = TRUE;
-		// 	i++;
-		// }
+		if (format[i] == '-')
+		{
+			val->dash = TRUE;
+			i++;
+		}
 		i = check_width(val, format, i);
 	}
 	return (i);
