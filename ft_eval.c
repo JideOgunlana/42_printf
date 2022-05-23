@@ -6,18 +6,18 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:33:49 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/21 17:43:04 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/23 20:36:49 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	check_width(t_printf *val, const char *format, int i)
 {
-	while (ft_strchr("0123456789", format[i]))
+	int	num;
+
+	while (ft_strchr(DECIMALS, format[i]))
 	{
-		int	num;
 		num = format[i] - '0';
 		if (val->width > 0)
 			val->width = (val->width * 10) + num;
@@ -28,10 +28,9 @@ int	check_width(t_printf *val, const char *format, int i)
 	return (i);
 }
 
-
 int	check_flags(t_printf *val, const char *format, int i)
 {
-	while (!(ft_strchr("cdsupixX%", format[i])))
+	while (!(ft_strchr(FLAGS, format[i])))
 	{
 		if (format[i] == '#' && i++)
 			val->pound = TRUE;
@@ -45,8 +44,10 @@ int	check_flags(t_printf *val, const char *format, int i)
 			val->zero = TRUE;
 		if (format[i] == '.' && i++)
 		{
-			val->point = format[i] - '0';
+			if (ft_strchr(DECIMALS, format[i]))
+				val->point = format[i] - '0';
 			i++;
+			return (i);
 		}
 		i = check_width(val, format, i);
 	}

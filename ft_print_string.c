@@ -6,12 +6,11 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:33:38 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/21 18:13:21 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/23 19:59:22 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void	str_dash_flag(char *str, int width_count, t_printf *val, int str_len)
 {
@@ -30,9 +29,12 @@ void	ft_print_string(t_printf *val)
 
 	width_count = 0;
 	str = va_arg(val->args, char *);
-	str_len = ft_strlen(str);
 	if (str == NULL)
-		str = "(null)";
+	{
+		val->tl += write(1, "(null)", 6);
+		return ;
+	}
+	str_len = ft_strlen(str);
 	val->tl += str_len;
 	width_count = val->width - str_len;
 	if (val->dash)

@@ -5,7 +5,7 @@ CFLAGS = -Wall -Werror -Wextra
 AR = ar rcs
 RM = rm -f
 
-SRC_FILES = ft_printf ft_eval ft_print_char ft_print_hex ft_print_num ft_print_pointer ft_print_string ft_print_unbr
+SRC_FILES = ft_printf ft_eval ft_print_char ft_print_hex ft_print_num ft_print_pointer ft_print_string ft_print_unbr ft_width_count ft_hex_flag
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(SRC_FILES)))
 

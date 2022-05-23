@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_width_count.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bogunlan <bogunlan@student.42Heilbronn.    +#+  +:+       +#+        */
+/*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 22:50:38 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/22 22:50:38 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/23 19:42:36 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
