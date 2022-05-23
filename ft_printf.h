@@ -42,5 +42,6 @@ void		ft_print_string(t_printf *val);
 void		ft_print_pointer(t_printf *val);
 void		ft_print_unsigned_int(t_printf *val);
 void		ft_print_hex(t_printf *val, char c);
+int			ft_width_count(t_printf *val, int width_count);
 
 #endif

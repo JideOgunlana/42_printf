@@ -10,13 +10,38 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "ft_printf.h"
 
-int	ft_hex_l(unsigned int num)
+int	ft_hex_len(unsigned int num)
 {
 	if (num < 16)
 		return (1);
-	return (ft_hex_l(num / 16) + 1);
+	return (ft_hex_len(num / 16) + 1);
+}
+
+int	check_width_count(t_printf *val, int num, int width_count, char c)
+{
+	if (val->pound && c == 'x' && num != 0)
+	{
+		width_count -= 2;
+		width_count = ft_width_count(val, width_count);
+		write(1, "0x", 2);
+		if (width_count < 0)
+			val->tl += 2;
+		val->pound = FALSE;
+	}
+	if (val->pound && c == 'X' && num != 0)
+	{
+		width_count -= 2;
+		write(1, "0X", 2);
+		width_count = ft_width_count(val, width_count);
+		width_count -= 2;
+		if (width_count < 0)
+		val->tl += 2;
+		val->pound = FALSE;
+	}
+	val->width = 0;
 }
 
 void	ft_put_hex(unsigned int num, char c, int fd)
@@ -43,21 +68,56 @@ void	ft_put_hex(unsigned int num, char c, int fd)
 	}
 }
 
+void	hex_has_dash(t_printf *val, int num, char c, int width_count)
+{
+	if (c == 'x' && num != 0)
+	{
+		if (val->pound)
+			width_count -= write(1, "0x", 2);
+		ft_put_hex(num, c, 1);
+		width_count = ft_width_count(val, width_count);
+		if (width_count < 0 && val->pound)
+			val->tl += 2;
+		val->pound = FALSE;
+	}
+	if (c == 'X' && num != 0)
+	{
+		if (val->pound)
+			width_count -= write(1, "0X", 2);
+		ft_put_hex(num, c, 1);
+		width_count = ft_width_count(val, width_count);
+		if (width_count < 0 && val->pound)
+			val->tl += 2;
+		val->pound = FALSE;
+	}
+	val->width = 0;
+}
+
 void	ft_print_hex(t_printf *val, char c)
 {
 	unsigned int	num;
-
+	int				width_count;
+	
 	num = va_arg(val->args, unsigned int);
-	val->tl += ft_hex_l(num);
-	if (val->pound && c == 'x' && num != 0)
+	val->tl += ft_hex_len(num);
+	width_count = val->width - ft_hex_len(num);
+	if (width_count > 0)
+		val->tl += width_count;
+		while (width_count > 0 && !val->pound)
+		{
+			if (val->zero)
+				write(1, "0", 1);
+			else
+				write(1, " ", 1);
+			width_count--;
+		}
+	if (val->dash)
 	{
-		write(1, "0x", 2);
-		val->tl += 2;
+		hex_has_dash(val, num, c, width_count);
+		val->dash = FALSE;
+		return ;
 	}
-	if (val->pound && c == 'X' && num != 0)
-	{
-		write(1, "0X", 2);
-		val->tl += 2;
-	}
+	width_count = check_width_count(val, num, width_count, c);
+	val->width = width_count;
 	ft_put_hex(num, c, 1);
 }

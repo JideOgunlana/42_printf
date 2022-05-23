@@ -13,14 +13,10 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-void	minus_flag(char *str, int width_count, t_printf *val, int str_len)
+void	str_dash_flag(char *str, int width_count, t_printf *val, int str_len)
 {
 	ft_putstr_fd(str, 1);
-	while (width_count > 0)
-	{
-		write(1, " ", 1);
-		width_count--;
-	}
+	width_count = ft_width_count(val, width_count);
 	if (val->width > str_len)
 		val->tl += val->width - str_len;
 	val->width = width_count;
@@ -41,16 +37,13 @@ void	ft_print_string(t_printf *val)
 	width_count = val->width - str_len;
 	if (val->dash)
 	{
-		minus_flag(str, width_count, val, str_len);
+		str_dash_flag(str, width_count, val, str_len);
+		val->dash = FALSE;
 		return ;
 	}
-	while (width_count > 0)
-	{
-		write(1, " ", 1);
-		width_count--;
-	}
-	if (val->width > (int) str_len)
-		val->tl += val->width - str_len ;
+	if (val->width > str_len)
+		val->tl += width_count;
+	width_count = ft_width_count(val, width_count);
 	val->width = width_count;
 	ft_putstr_fd(str, 1);
 }

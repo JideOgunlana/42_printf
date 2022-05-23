@@ -28,28 +28,24 @@ int	check_width(t_printf *val, const char *format, int i)
 	return (i);
 }
 
+
 int	check_flags(t_printf *val, const char *format, int i)
 {
 	while (!(ft_strchr("cdsupixX%", format[i])))
 	{
-		if (format[i] == '#')
-		{
+		if (format[i] == '#' && i++)
 			val->pound = TRUE;
-			i++;
-		}
-		if (format[i] == ' ')
-		{
+		if (format[i] == ' ' && i++)
 			val->spc = TRUE;
-			i++;
-		}
-		if (format[i] == '+')
-		{
+		if (format[i] == '+' && i++)
 			val->sign = TRUE;
-			i++;
-		}
-		if (format[i] == '-')
-		{
+		if (format[i] == '-' && i++)
 			val->dash = TRUE;
+		if (format[i] == '0' && i++)
+			val->zero = TRUE;
+		if (format[i] == '.' && i++)
+		{
+			val->point = format[i] - '0';
 			i++;
 		}
 		i = check_width(val, format, i);
