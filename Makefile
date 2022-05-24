@@ -6,9 +6,6 @@ AR = ar rcs
 RM = rm -f
 
 SRC_FILES = ft_printf ft_eval ft_print_char ft_print_hex ft_print_num ft_print_pointer ft_print_string ft_print_unbr ft_width_count ft_hex_flag
-SRCS_DIR = ./
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(SRC_FILES)))
-
 LIBFT_FILES = 		ft_strlen \
 					ft_atoi \
 					ft_memset \
@@ -43,22 +40,19 @@ LIBFT_FILES = 		ft_strlen \
 					ft_strmapi \
 					ft_striteri \
 					ft_split
-lIBFT_DIR = libft/
-LIBFT = $(addprefix $(LIBFT_DIR), $(addsuffix .c, $(LIBFT_FILES)))
 
-OBJS_DIR = ./
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRC_FILES)))
+SRCS = $(addprefix ./, $(addsuffix .c, $(SRC_FILES))) # path of the printf source code
+LIBFT = $(addprefix libft/, $(addsuffix .c, $(LIBFT_FILES))) # path to access and create printf object files
 
-LIBFT_OBJS_DIR = libft/
-LIBFT_OBJS = $(addprefix $(LIBFT_OBJS_DIR), $(addsuffix .o, $(LIBFT_FILES)))
+OBJS = $(addprefix ./, $(addsuffix .o, $(SRC_FILES))) # path of the libft source code
+LIBFT_OBJS = $(addprefix libft/, $(addsuffix .o, $(LIBFT_FILES))) # path to access and create libft object files
 
-all: $(LIBFT_OBJS) $(NAME)
-	$(AR) $(NAME) $(LIBFT_OBJS)
+all: $(LIBFT_OBJS) $(NAME) # rule to build everything in the code base (a collection of source files that contain source code)
 
-c.o: $(SRCS) $(LIBFT)
+.c.o: $(SRCS) $(LIBFT)          #compile with flags to create object files for all c source code in both printf and libft
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(LIBFT_OBJS) #create an archive file called name (libftprint.a) i.e $@ using all objects from printf and libft i.e $^
 	$(AR) $@ $^
 
 bonus: re
@@ -71,4 +65,4 @@ fclean: clean
 
 re: clean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus .c.o

@@ -6,13 +6,12 @@
 /*   By: bogunlan <bogunlan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:35:01 by bogunlan          #+#    #+#             */
-/*   Updated: 2022/05/23 21:56:46 by bogunlan         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:44:27 by bogunlan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-#include <printf.h>
 int	ft_unsinged_nbr_l(unsigned int num)
 {
 	if (num < 0)
@@ -53,7 +52,7 @@ void	ft_print_unsigned_int(t_printf *val)
 	unsigned int	u;
 	int				width_count;
 	char			*str;
-	
+
 	u = va_arg(val->args, unsigned int);
 	str = ft_itoa(u);
 	val->tl += ft_unsinged_nbr_l(u);
