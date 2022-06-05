@@ -17,10 +17,13 @@ int	ft_width_count(t_printf *val, int width_count)
 	while (width_count > 0)
 	{
 		if (val->zero && !val->dash)
+		{
 			write(1, "0", 1);
+		}
 		else
 			write(1, " ", 1);
 		width_count--;
 	}
+	val->zero = FALSE;
 	return (width_count);
 }
