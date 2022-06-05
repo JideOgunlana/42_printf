@@ -14,25 +14,28 @@
 
 int	ft_unsinged_nbr_l(unsigned int num)
 {
-	if (num < 0)
-		num += 4294967295;
-	else if (num < 10)
+	if (num < 10)
 		return (1);
 	return (ft_unsinged_nbr_l(num / 10) + 1);
 }
 
-void	ft_put_unsigned_nbr_fd(unsigned int num, int fd)
+void	ft_put_unsigned_nbr_fd(unsigned int num, int fd, t_printf *val)
 {
-	if (num < 0)
-		num += 4294967295;
-	else if (num < 10)
+	// printf("number is:%d", num);
+	if ((long int) num == -2147483648)
+	{
+		val->tl += write(1, "-", 1);
+	// printf("number is:%d", num);
+		num *= -1;
+	}
+	if (num < 10)
 	{
 		num = num + '0';
 		ft_putchar_fd(num, fd);
 	}
 	else
 	{
-		ft_put_unsigned_nbr_fd(num / 10, fd);
+		ft_put_unsigned_nbr_fd(num / 10, fd, val);
 		num = (num % 10) + '0';
 		ft_putchar_fd(num, fd);
 	}
@@ -40,7 +43,7 @@ void	ft_put_unsigned_nbr_fd(unsigned int num, int fd)
 
 void	unum_dash_flag(unsigned int num, int width_count, t_printf *val)
 {
-	ft_put_unsigned_nbr_fd(num, 1);
+	ft_put_unsigned_nbr_fd(num, 1, val);
 	if (width_count > 0)
 		val->tl += width_count;
 	width_count = ft_width_count(val, width_count);
@@ -51,16 +54,16 @@ void	ft_print_unsigned_int(t_printf *val)
 {
 	unsigned int	u;
 	int				width_count;
-	char			*str;
+	// char			*str;
 
 	u = va_arg(val->args, unsigned int);
-	str = ft_itoa(u);
+	// str = ft_itoa(u);
 	val->tl += ft_unsinged_nbr_l(u);
-	if ((int) u > 0)
-		width_count = val->width - ft_strlen(str);
+	if (u >= 0 && (long int)u != -2147483648 )
+		width_count = val->width - ft_unsinged_nbr_l(u);
 	else
-		width_count = 0;
-	free(str);
+		width_count = val->width - ft_unsinged_nbr_l(u) - 1;
+	// free(str);
 	if (val->dash)
 	{
 		unum_dash_flag(u, width_count, val);
@@ -70,5 +73,6 @@ void	ft_print_unsigned_int(t_printf *val)
 	if (width_count > 0)
 		val->tl += width_count;
 	width_count = ft_width_count(val, width_count);
-	ft_put_unsigned_nbr_fd(u, 1);
+	val->width =width_count;
+	ft_put_unsigned_nbr_fd(u, 1, val);
 }
