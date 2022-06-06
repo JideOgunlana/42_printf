@@ -28,6 +28,22 @@ int	check_width(t_printf *val, const char *format, int i)
 	return (i);
 }
 
+int	check_point(t_printf *val, const char *format, int i)
+{
+	int	num;
+
+	while (ft_strchr(DECIMALS, format[i]))
+	{
+		num = format[i] - '0';
+		if (val->point > 0)
+			val->point = (val->point * 10) + num;
+		else
+			val->point = num;
+		i++;
+	}
+	return (i);
+}
+
 int	check_flags(t_printf *val, const char *format, int i)
 {
 	while (!(ft_strchr(FLAGS, format[i])))
@@ -44,10 +60,7 @@ int	check_flags(t_printf *val, const char *format, int i)
 			val->zero = TRUE;
 		if (format[i] == '.' && i++)
 		{
-			if (ft_strchr(DECIMALS, format[i]))
-				val->point = format[i] - '0';
-			i++;
-			return (i);
+			i = check_point(val, format, i);
 		}
 		i = check_width(val, format, i);
 	}
